@@ -1,8 +1,12 @@
 require("../db/config")
 const userModel = require("../models/userModel")
+const roleModel = require("../models/roleModel")
 
 const createUser = async (req, res) => {
+      
     try {
+        await roleModel.find({ role: req.body.role })
+
       const newuser = new userModel({
         name: req.body.name,
         lastName: req.body.lastName,
