@@ -10,7 +10,7 @@ const createUser = async (req, res) => {
         password: req.body.password,
         phone: req.body.phone,
         dob: req.body.dob,
-        // role: req.body.,
+        role: req.body
       });
   
       const userexist = await userModel.findOne({ email: req.body.email });

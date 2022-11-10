@@ -6,7 +6,7 @@ const userSchema = mongoose.Schema({
   password: { type: String ,require:true},
   phone: { type: Number, maxLength: 10 },
   dob: { type: String, required: true},
-//   role: { type: Schema.Types.ObjectId, ref: "role" },
+  role: { type: mongoose.Schema.Types.ObjectId, ref: "roles" },
 });
 
 const user = mongoose.model("user", userSchema);
