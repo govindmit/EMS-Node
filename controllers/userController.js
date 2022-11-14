@@ -1,4 +1,4 @@
-require("../db/config");
+
 const bcrypt = require("bcryptjs");
 const genrateToken = require("../middleware/authjwt");
 const userModel = require("../models/userModel");
@@ -7,12 +7,9 @@ const departmentModel = require("../models/departmentModel");
 
 const createUser = async (req, res) => {
   const result = await roleModel.findOne({ name: req.body.role });
-  console.log("ajju", result);
   const response = await departmentModel.findOne({
     departmentName: req.body.department,
   });
-  console.log("om", response);
-
   try {
     const newuser = new userModel({
       name: req.body.name,
@@ -48,23 +45,31 @@ const login = async (req, res) => {
   try {
     if (req.body.password && req.body.email) {
       const user = await userModel.findOne({ email: req.body.email });
-      console.log("omm45", user);
       if (user) {
-        res.status(200).json({
-          succes: true,
-          msg: "user login successfuly",
-          data: {
-            _id: user._id,
-            name: user.name,
-            lastName: user.lastName,
-            email: user.email,
-            phone: user.phone,
-            password: user.password,
-            dob: user.dob,
-            role: user.role,
-            department: user.department,
-            token: genrateToken.token(user._id),
-          },
+        bcrypt.compare(req.body.password, user.password, (err, result) => {
+          if (!result) {
+            return res.status(200).json({
+              message: "password is incorrect",
+            });
+          }
+          if (result) {
+            res.status(200).json({
+              succes: true,
+              msg: "user login successfuly",
+              data: {
+                _id: user._id,
+                name: user.name,
+                lastName: user.lastName,
+                email: user.email,
+                phone: user.phone,
+                password: user.password,
+                dob: user.dob,
+                role: user.role,
+                department: user.department,
+                token: genrateToken.token(user._id),
+              },
+            });
+          }
         });
       } else {
         res.send({ message: "user not found" });
