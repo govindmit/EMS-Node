@@ -1,7 +1,7 @@
-const mongooes = require("mongoose");
+const mongoose = require("mongoose");
 
 const DatabaseConn = () => {
-  mongooes
+  mongoose
     .connect(process.env.MONOGODBDEV, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
