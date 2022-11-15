@@ -1,4 +1,12 @@
-const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/employee-management-system");
-mongoose.set('bufferCommands', false);
-console.log("database is connected");
+const mongooes = require("mongoose");
+
+const DatabaseConn = () => {
+  mongooes
+    .connect(process.env.MONOGODBDEV, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then((data) => console.log("DB connected !"))
+    .catch((error) => console.log("error", error));
+};
+module.exports = DatabaseConn;
