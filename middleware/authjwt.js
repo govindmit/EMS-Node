@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const key = "EMS";
 const token = (id) => {
-  return jwt.sign({ id }, key, { expiresIn: "10m" });
+  return jwt.sign({ id }, key, { expiresIn: "12m" });
 };
 
 const verifyToken = (req, res, next) => {

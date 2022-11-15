@@ -1,4 +1,3 @@
-
 const bcrypt = require("bcryptjs");
 const genrateToken = require("../middleware/authjwt");
 const userModel = require("../models/userModel");

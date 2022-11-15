@@ -1,6 +1,6 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
-const verifytoken = require("../middleware/authjwt")
+const verifytoken = require("../middleware/authjwt");
 
 const userRoute = express.Router();
 
@@ -9,9 +9,10 @@ const userController = require("../Controllers/userController");
 userRoute.post("/user/create", userController.createUser);
 userRoute.post("/user/login", userController.login);
 
-userRoute.get("/authorizToken",verifytoken.verifyToken, (req, res) => {
-
-  res.status(200).json({message:"Authorization successful! this token use for rest api request"})
+userRoute.post("/verifyLogin", verifytoken.verifyToken, (req, res) => {
+  res.status(200).json({
+    message: "Authorization successful! this token use for rest api request",
+  });
   // const username = req.body;
   // const password = req.body;
   // try {
