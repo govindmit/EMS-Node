@@ -9,12 +9,7 @@ const userController = require("../Controllers/userController");
 userRoute.post("/user/create", userController.createUser);
 userRoute.post("/user/login",verifytoken.verifyToken, userController.login);
 
-userRoute.post("/verifyLogin",  (req, res) => {
-  // res.status(200).json({
-  //   message: "Authorization successful! this token use for rest api request",
-  // });
-  const username = req.body;
-  const password = req.body;
+userRoute.post("/verifyLoginToken",  (req, res) => {
   try {
     const token = jwt.sign(
       { email: username, password: password },
