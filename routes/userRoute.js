@@ -4,7 +4,7 @@ const verifytoken = require("../middleware/authjwt")
 
 const userRoute = express.Router();
 
-const userController = require("../controllers/userController");
+const userController = require("../Controllers/userController");
 
 userRoute.post("/user/create", userController.createUser);
 userRoute.post("/user/login", userController.login);

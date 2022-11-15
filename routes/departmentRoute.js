@@ -1,7 +1,7 @@
 const express = require("express");
 
 const departmentRoute = express.Router();
-const departmentControllers = require("../controllers/departmentController");
+const departmentControllers = require("../Controllers/departmentController");
 departmentRoute.post(
   "/department/create",
   departmentControllers.createDepartment
