@@ -21,8 +21,6 @@ userRoute.post("/verifyLoginToken",  (req, res) => {
       process.env.SECRET_KEY
     );
     res.status(200).json({
-      success: "login successfully",
-      message: "Authorization successful! this token use for rest api request",
       token: token,
     });
   } catch (error) {
