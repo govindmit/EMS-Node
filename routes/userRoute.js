@@ -12,7 +12,6 @@ userRoute.post("/user/login",verifytoken.verifyToken, userController.login);
 userRoute.post("/verifyLoginToken",  (req, res) => {
   try {
     const token = jwt.sign(
-      { email: username, password: password },
       process.env.SECRET_KEY
     );
     res.status(200).json({
