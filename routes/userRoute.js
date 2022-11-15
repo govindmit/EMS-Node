@@ -9,7 +9,7 @@ const userController = require("../controllers/userController");
 userRoute.post("/user/create", userController.createUser);
 userRoute.post("/user/login", userController.login);
 
-userRoute.get("/authtoken",verifytoken.verifyToken, (req, res) => {
+userRoute.get("/authorizToken",verifytoken.verifyToken, (req, res) => {
 
   res.status(200).json({message:"Authorization successful! this token use for rest api request"})
   // const username = req.body;
