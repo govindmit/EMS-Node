@@ -10,6 +10,6 @@ const roleRoute = require("./routes/roleRoute");
 app.use("/api", roleRoute);
 const departmentRoute = require("./routes/departmentRoute");
 app.use("/api", departmentRoute);
-const port = process.env.PORT || "3600";
+const port = process.env.PORT ;
 
 app.listen(port, console.log("server is runing "));
