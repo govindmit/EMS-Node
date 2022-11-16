@@ -5,7 +5,7 @@ const token = (id) => {
 };
 
 const verifyToken = (req, res, next) => {
-  const token = req.headers["LoginToken"];
+  const token = req.headers["authorization"];
   console.log(token);
   if (token) {
     const tokenn = token;
