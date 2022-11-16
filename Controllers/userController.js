@@ -84,7 +84,35 @@ const login = async (req, res) => {
   }
 };
 
+const updateProfile = async (req, res) => {
+  try {
+    const result = await userModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          name: req.body.name,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          phone: req.body.phone,
+          dob: req.body.phone,
+          password: req.body.password,
+          // role: req.body.role,
+          // department: req.body.department
+        },
+      }
+    );
+
+    res
+      .status(200)
+      .json({ success: true, msg: "update record successfully", data: result });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+
 module.exports = {
   createUser,
   login,
+  updateProfile,
 };
