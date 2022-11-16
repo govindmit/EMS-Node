@@ -86,10 +86,10 @@ const login = async (req, res) => {
 
 const updateProfile = async (req, res) => {
   try {
-    const respons = await roleModel.findOne({ name: req.body.role });
-    const response = await departmentModel.findOne({
-      departmentName: req.body.department,
-    });
+    // const respons = await roleModel.findOne({ name: req.body.role });
+    // const response = await departmentModel.findOne({
+    //   departmentName: req.body.department,
+    // });
     const result = await userModel.findOneAndUpdate(
       { _id: req.params.id },
       {
@@ -100,8 +100,6 @@ const updateProfile = async (req, res) => {
           phone: req.body.phone,
           dob: req.body.phone,
           password: req.body.password,
-          role: respons._id,
-          department: response._id,
         },
       }
     );
