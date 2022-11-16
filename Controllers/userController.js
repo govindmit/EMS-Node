@@ -86,6 +86,10 @@ const login = async (req, res) => {
 
 const updateProfile = async (req, res) => {
   try {
+    const respons = await roleModel.findOne({ name: req.body.role });
+    const response = await departmentModel.findOne({
+      departmentName: req.body.department,
+    });
     const result = await userModel.findOneAndUpdate(
       { _id: req.params.id },
       {
@@ -96,12 +100,11 @@ const updateProfile = async (req, res) => {
           phone: req.body.phone,
           dob: req.body.phone,
           password: req.body.password,
-          // role: req.body.role,
-          // department: req.body.department
+          role: respons._id,
+          department: response._id,
         },
       }
     );
-
     res
       .status(200)
       .json({ success: true, msg: "update record successfully", data: result });
@@ -109,7 +112,6 @@ const updateProfile = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
-
 
 module.exports = {
   createUser,
