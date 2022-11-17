@@ -3,7 +3,6 @@ const departmentModel = require("../models/departmentModel");
 const createDepartment = async (req, res) => {
   try {
     var body = req.body;
-    console.log(body);
     const result = new departmentModel(body);
     await result.save().then((response) => {
       res.status(200).send(response);

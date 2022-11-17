@@ -6,10 +6,8 @@ const token = (id) => {
 
 const verifyToken = (req, res, next) => {
   const token = req.headers["authorization"];
-  console.log(token);
   if (token) {
     const tokenn = token;
-    console.log(tokenn);
     jwt.verify(tokenn, key, (err, valid) => {
       if (err) {
         res.status(401).json({ message: "please provide a  valid jwt token" });
